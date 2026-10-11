@@ -17,16 +17,19 @@ public class MaintenanceServiceImpl implements IMaintenance {
 
     @Override
     public List<Maintenance> retrieveAllMaintenances() {
+
         return maintenanceRepository.findAll();
     }
 
     @Override
     public Maintenance addMaintenance(Maintenance maintenance) {
+
         return maintenanceRepository.save(maintenance);
     }
 
     @Override
     public Maintenance updateMaintenance(Maintenance maintenance) {
+
         return maintenanceRepository.save(maintenance);
     }
 
@@ -37,6 +40,7 @@ public class MaintenanceServiceImpl implements IMaintenance {
 
     @Override
     public void removeMaintenance(Long idMaintenance) {
+
         maintenanceRepository.deleteById(idMaintenance);
     }
 

@@ -17,21 +17,25 @@ public class EmployeServiceImpl implements IEmploye {
 
     @Override
     public List<Employe> retrieveAllEmployes() {
+
         return employeRepository.findAll();
     }
 
     @Override
     public Employe addEmploye(Employe employe) {
+
         return employeRepository.save(employe);
     }
 
     @Override
     public Employe updateEmploye(Employe employe) {
+
         return employeRepository.save(employe);
     }
 
     @Override
     public Employe retrieveEmploye(Long idEmploye) {
+
         return employeRepository.findById(idEmploye).orElse(null);
     }
 
@@ -42,6 +46,7 @@ public class EmployeServiceImpl implements IEmploye {
 
     @Override
     public List<Employe> addEmployes(List<Employe> employes) {
+
         return employeRepository.saveAll(employes);
     }
 }

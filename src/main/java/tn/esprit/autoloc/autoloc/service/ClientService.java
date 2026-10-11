@@ -1,12 +1,21 @@
 package tn.esprit.autoloc.autoloc.service;
 
+import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.autoloc.domain.Client;
 import tn.esprit.autoloc.autoloc.repository.ClientRepository;
 
 import java.util.List;
 
+@Service
 public class ClientService implements IClientService {
-    ClientRepository repo;
+
+    private final ClientRepository repo;
+
+    // Injection par constructeur
+    public ClientService(ClientRepository repo) {
+        this.repo = repo;
+    }
+
     @Override
     public List<Client> retrieveAllClients() {
         return repo.findAll();
@@ -30,7 +39,6 @@ public class ClientService implements IClientService {
     @Override
     public void removeClient(Long idClient) {
         repo.deleteById(idClient);
-
     }
 
     @Override

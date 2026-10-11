@@ -12,6 +12,7 @@ public class PaiementServiceImpl implements IPaiement {
     private final PaiementRepository paiementRepository;
 
     public PaiementServiceImpl(PaiementRepository paiementRepository) {
+
         this.paiementRepository = paiementRepository;
     }
 
@@ -22,26 +23,31 @@ public class PaiementServiceImpl implements IPaiement {
 
     @Override
     public Paiement addPaiement(Paiement paiement) {
+
         return paiementRepository.save(paiement);
     }
 
     @Override
     public Paiement updatePaiement(Paiement paiement) {
+
         return paiementRepository.save(paiement);
     }
 
     @Override
     public Paiement retrievePaiement(Long idPaiement) {
+
         return paiementRepository.findById(idPaiement).orElse(null);
     }
 
     @Override
     public void removePaiement(Long idPaiement) {
+
         paiementRepository.deleteById(idPaiement);
     }
 
     @Override
     public List<Paiement> addPaiements(List<Paiement> paiements) {
+
         return paiementRepository.saveAll(paiements);
     }
 }
