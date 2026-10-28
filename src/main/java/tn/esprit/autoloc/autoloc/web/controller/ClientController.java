@@ -1,8 +1,11 @@
 package tn.esprit.autoloc.autoloc.web.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.autoloc.autoloc.domain.Client;
+import tn.esprit.autoloc.autoloc.dto.ClientCreateRequestDto;
+import tn.esprit.autoloc.autoloc.dto.ClientResponseDto;
+import tn.esprit.autoloc.autoloc.dto.ClientUpdateRequestDto;
 import tn.esprit.autoloc.autoloc.service.IClientService;
 
 import java.util.List;
@@ -18,13 +21,13 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<Client> getAllClients() {
+    public List<ClientResponseDto> getAllClients() {
         return clientService.retrieveAllClients();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable Long id) {
-        Client client = clientService.retrieveClient(id);
+    public ResponseEntity<ClientResponseDto> getClientById(@PathVariable Long id) {
+        ClientResponseDto client = clientService.retrieveClient(id);
         if (client == null) {
             return ResponseEntity.notFound().build();
         }
@@ -32,22 +35,21 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client addClient(@RequestBody Client client) {
+    public ClientResponseDto addClient(@Valid @RequestBody ClientCreateRequestDto client) {
         return clientService.addClient(client);
     }
 
     @PostMapping("/batch")
-    public List<Client> addClients(@RequestBody List<Client> clients) {
+    public List<ClientResponseDto> addClients(@Valid @RequestBody List<@Valid ClientCreateRequestDto> clients) {
         return clientService.addClients(clients);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody Client client) {
+    public ResponseEntity<ClientResponseDto> updateClient(@PathVariable Long id, @Valid @RequestBody ClientUpdateRequestDto client) {
         if (clientService.retrieveClient(id) == null) {
             return ResponseEntity.notFound().build();
         }
-        client.setIdClient(id);
-        return ResponseEntity.ok(clientService.updateClient(client));
+        return ResponseEntity.ok(clientService.updateClient(id, client));
     }
 
     @DeleteMapping("/{id}")
