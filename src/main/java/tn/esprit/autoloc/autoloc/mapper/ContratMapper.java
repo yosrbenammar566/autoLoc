@@ -3,7 +3,7 @@ package tn.esprit.autoloc.autoloc.mapper;
 import tn.esprit.autoloc.autoloc.domain.Contrat;
 import tn.esprit.autoloc.autoloc.domain.Reservation;
 import tn.esprit.autoloc.autoloc.dto.ContratCreateRequestDto;
-import tn.esprit.autoloc.autoloc.dto.ContratResponseDto;
+import tn.esprit.autoloc.autoloc.dto.ContratDTO;
 import tn.esprit.autoloc.autoloc.dto.ContratUpdateRequestDto;
 
 import java.util.List;
@@ -13,11 +13,11 @@ public final class ContratMapper {
     private ContratMapper() {
     }
 
-    public static ContratResponseDto toResponseDto(Contrat contrat) {
+    public static ContratDTO toResponseDto(Contrat contrat) {
         if (contrat == null) {
             return null;
         }
-        return new ContratResponseDto(
+        return new ContratDTO(
                 contrat.getIdContrat(),
                 contrat.getDateSignature(),
                 contrat.getMontantTotal(),
@@ -26,7 +26,7 @@ public final class ContratMapper {
         );
     }
 
-    public static List<ContratResponseDto> toResponseDtoList(List<Contrat> contrats) {
+    public static List<ContratDTO> toResponseDtoList(List<Contrat> contrats) {
         return contrats.stream()
                 .map(ContratMapper::toResponseDto)
                 .toList();

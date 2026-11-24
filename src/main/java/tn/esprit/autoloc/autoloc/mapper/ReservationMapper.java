@@ -4,7 +4,7 @@ import tn.esprit.autoloc.autoloc.domain.Client;
 import tn.esprit.autoloc.autoloc.domain.Reservation;
 import tn.esprit.autoloc.autoloc.domain.Vehicule;
 import tn.esprit.autoloc.autoloc.dto.ReservationCreateRequestDto;
-import tn.esprit.autoloc.autoloc.dto.ReservationResponseDto;
+import tn.esprit.autoloc.autoloc.dto.ReservationResponseDTO;
 import tn.esprit.autoloc.autoloc.dto.ReservationUpdateRequestDto;
 
 import java.util.List;
@@ -14,11 +14,11 @@ public final class ReservationMapper {
     private ReservationMapper() {
     }
 
-    public static ReservationResponseDto toResponseDto(Reservation reservation) {
+    public static ReservationResponseDTO toResponseDto(Reservation reservation) {
         if (reservation == null) {
             return null;
         }
-        return new ReservationResponseDto(
+        return new ReservationResponseDTO(
                 reservation.getIdReservation(),
                 reservation.getDateDebut(),
                 reservation.getDateFin(),
@@ -28,7 +28,7 @@ public final class ReservationMapper {
         );
     }
 
-    public static List<ReservationResponseDto> toResponseDtoList(List<Reservation> reservations) {
+    public static List<ReservationResponseDTO> toResponseDtoList(List<Reservation> reservations) {
         return reservations.stream()
                 .map(ReservationMapper::toResponseDto)
                 .toList();

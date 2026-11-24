@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContratResponseDto {
+public class ContratDTO {
 
     private Long idContrat;
     private LocalDate dateSignature;

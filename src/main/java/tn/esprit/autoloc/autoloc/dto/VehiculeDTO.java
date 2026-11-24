@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class VehiculeResponseDto {
+public class VehiculeDTO {
 
     private Long idVehicule;
     private String immatriculation;

@@ -3,7 +3,7 @@ package tn.esprit.autoloc.autoloc.mapper;
 import tn.esprit.autoloc.autoloc.domain.Agence;
 import tn.esprit.autoloc.autoloc.domain.Vehicule;
 import tn.esprit.autoloc.autoloc.dto.VehiculeCreateRequestDto;
-import tn.esprit.autoloc.autoloc.dto.VehiculeResponseDto;
+import tn.esprit.autoloc.autoloc.dto.VehiculeDTO;
 import tn.esprit.autoloc.autoloc.dto.VehiculeUpdateRequestDto;
 
 import java.util.List;
@@ -13,11 +13,11 @@ public final class VehiculeMapper {
     private VehiculeMapper() {
     }
 
-    public static VehiculeResponseDto toResponseDto(Vehicule vehicule) {
+    public static VehiculeDTO toResponseDto(Vehicule vehicule) {
         if (vehicule == null) {
             return null;
         }
-        return new VehiculeResponseDto(
+        return new VehiculeDTO(
                 vehicule.getIdVehicule(),
                 vehicule.getImmatriculation(),
                 vehicule.getMarque(),
@@ -29,7 +29,7 @@ public final class VehiculeMapper {
         );
     }
 
-    public static List<VehiculeResponseDto> toResponseDtoList(List<Vehicule> vehicules) {
+    public static List<VehiculeDTO> toResponseDtoList(List<Vehicule> vehicules) {
         return vehicules.stream()
                 .map(VehiculeMapper::toResponseDto)
                 .toList();

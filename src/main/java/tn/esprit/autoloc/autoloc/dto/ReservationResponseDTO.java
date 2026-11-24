@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservationResponseDto {
+public class ReservationResponseDTO {
 
     private Long idReservation;
     private LocalDate dateDebut;
